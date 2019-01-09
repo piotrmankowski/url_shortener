@@ -14,3 +14,10 @@
 //= require activestorage
 //= require turbolinks
 //= require_tree .
+
+
+function copyToClipboard (element) {
+  let copyText = document.getElementById(element);
+  copyText.select();
+  document.execCommand('copy');
+}

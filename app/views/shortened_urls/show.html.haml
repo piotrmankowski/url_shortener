@@ -1,0 +1,14 @@
+.shortener
+  .shortener__section
+    .shortener__content
+      %h3 Original url:
+      %input{ value: @shortened_url.original_url, class: 'url-input', id: 'original_url' }
+      %button.copy_button{id: 'original_url_button' } COPY
+
+      %h3 Shortened url:
+      %input{ value: root_url + @shortened_url.key, class: 'url-input', id: 'shortened_url'}
+      %button.copy_button{id: 'shortened_url_button'} COPY
+
+:javascript
+  document.getElementById('shortened_url_button').onclick = function () { copyToClipboard('shortened_url') };
+  document.getElementById('original_url_button').onclick = function () { copyToClipboard('original_url') };

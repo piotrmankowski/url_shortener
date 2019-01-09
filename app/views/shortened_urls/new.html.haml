@@ -1,0 +1,5 @@
+.shortener
+  .shortener__section
+    = simple_form_for @shortened_url, html: { class: 'shortener__form' } do |f|
+      = f.input :original_url, placeholder: 'Your original url here..', label: false, input_html: { class: 'shortener__input' }
+      = f.button :submit, 'SHORTEN URL', class: 'shortener__submit'
