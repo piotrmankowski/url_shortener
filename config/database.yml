@@ -1,0 +1,24 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  username: <%= ENV.fetch('URL_SHORTENER_DATABASE_USER') %>
+  password: <%= ENV.fetch('URL_SHORTENER_DATABASE_PASSWORD', '') %>
+  host: <%= ENV.fetch('URL_SHORTENER_DATABASE_HOST', 'localhost') %>
+  port: <%= ENV.fetch('URL_SHORTENER_DATABASE_PORT', '5432') %>
+
+development:
+  <<: *default
+  database: 'url_shortener_development'
+
+test:
+  <<: *default
+  database: 'url_shortener_test'
+
+staging:
+  <<: *default
+  database: 'url_shortener_staging'
+
+production:
+  <<: *default
+  database: 'url_shortener_production'
