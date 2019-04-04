@@ -22,7 +22,7 @@ RSpec.feature 'User tries to create new shortened url' do
       expect(page).to have_content 'Original url'
       expect(find('#original_url').value).to eq 'google.pl'
       expect(page).to have_content 'Shortened url'
-      expect(find('#shortened_url').value).to eq  "http://www.example.com/#{shortened_url.key}"
+      expect(find('#shortened_url').value).to eq "http://www.example.com/#{shortened_url.key}"
     end
   end
 end

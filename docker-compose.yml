@@ -1,9 +1,22 @@
 version: '3'
 services:
-  postgres:
+  db:
     image: postgres:10.5
     ports:
       - 5432:5432
     environment:
       POSTGRES_PASSWORD: postgres
       POSTGRES_USER: postgres
+  web:
+    build: .
+    image: web
+    command: bash -c 'bundle exec rails db:create db:migrate && bundle exec rails s'
+    environment:
+      DATABASE_URL: 'postgres://postgres:postgres@db:5432/url_shortener_development'
+      RAILS_ENV: 'development'
+    ports:
+      - 3000:3000
+    depends_on:
+      - db
+    links:
+      - db

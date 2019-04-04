@@ -20,7 +20,7 @@ class ShortenedUrlsController < ApplicationController
   end
 
   def redirect
-    decoded_id =   Base62.decode params[:key]
+    decoded_id = Base62.decode params[:key]
     shortened_url = ShortenedUrl.find(decoded_id)
     redirect_to shortened_url.sanitized_url
   end

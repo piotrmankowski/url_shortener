@@ -5,6 +5,6 @@ class ShortenedUrl < ApplicationRecord
   validates :sanitized_url, presence: true, url: true
 
   def key
-    Base62.encode self.id
+    Base62.encode id
   end
 end
